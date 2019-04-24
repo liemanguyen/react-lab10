@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-function App() {
+function Index() {
+  return <h2>Hi! My name's Liem!</h2>;
+}
+
+function About() {
+  return <p>I was born and raised in Fairfield, CA, and I'm currently a junior studying computer 
+    science at UC Berkeley. Be sure to check out some of my hobbies through the link above, and 
+    feel free to <a href='mailto: liem.nguyen@berkeley.edu'>send me</a> music recommendations!</p>
+}
+
+function Interests() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ul>
+      <li>ML/AI</li>
+      <li>cognition</li>
+      <li>music of all kinds</li>
+      <li>film</li>
+      <li>Liverpool F.C.</li>
+      <li>tennis</li>
+      <li>puppers</li>
+    </ul>
   );
 }
 
-export default App;
+function AppRouter() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about/">About</Link>
+            </li>
+            <li>
+              <Link to="/interests/">Interests</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Route path="/" exact component={Index} />
+        <Route path="/about/" component={About} />
+        <Route path="/interests/" component={Interests} />
+      </div>
+    </Router>
+  );
+}
+
+export default AppRouter;
